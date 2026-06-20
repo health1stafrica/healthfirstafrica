@@ -58,7 +58,7 @@ export default function ContactUs() {
             </h2>
             <div className="h-1 w-16 bg-[#3C8A4E] rounded-full mt-4" />
             <p className="text-[#1F1F1F]/80 text-base md:text-lg pt-2">
-              We’d love to hear from you. Whether it's structural inquiries, global partnerships, or project collaborations—reach out to our team.
+              We’d love to hear from you. Whether it `&#39;`s structural inquiries, global partnerships, or project collaborations—reach out to our team.
             </p>
           </div>
 

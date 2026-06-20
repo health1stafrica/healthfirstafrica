@@ -86,7 +86,7 @@ const categories: Record<string, CategoryItem[]> = {
       id: "s-4",
       icon: <BarChart4 className="w-6 h-6 text-[#194E6B]" />,
       title: "Ensuring Long-Term Impact",
-      description: "Our work is data-driven, adaptive, and accountable—ensuring lasting change where it's needed most.",
+      description: "Our work is data-driven, adaptive, and accountable—ensuring lasting change where it `&#39;`s needed most.",
     },
   ],
 };

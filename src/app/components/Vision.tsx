@@ -55,7 +55,7 @@ export default function Vision() {
             <div>
               <p className="font-semibold text-[#194E6B] mb-1">Health Equity First</p>
               <p className="text-sm md:text-base opacity-90">
-                We envision a society where geographic location, economic status, or social standing no longer dictate an individual's quality of care or life expectancy.
+                We envision a society where geographic location, economic status, or social standing no longer dictate an individual `&#39;`s quality of care or life expectancy.
               </p>
             </div>
             

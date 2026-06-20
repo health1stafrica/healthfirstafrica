@@ -1,6 +1,6 @@
 # Health First Africa
 
-Health First Africa is a modern, responsive web application for a Non-Governmental Organization (NGO) dedicated to improving healthcare accessibility across Africa. The platform serves as a hub for sharing the organization's mission, showcasing impact, facilitating donations, and recruiting volunteers
+Health First Africa is a modern, responsive web application for a Non-Governmental Organization (NGO) dedicated to improving healthcare accessibility across Africa. The platform serves as a hub for sharing the organization `&#39;`s mission, showcasing impact, facilitating donations, and recruiting volunteers
 
 ## 🚀 Features
 
@@ -9,7 +9,7 @@ Health First Africa is a modern, responsive web application for a Non-Government
 - **Donation Integration**: Dedicated flow for supporters to contribute to the cause.
 - **Information Sections**:
   - **About Us**: Organization history and values.
-  - **Mission & Vision**: Clear articulation of the project's goals.
+  - **Mission & Vision**: Clear articulation of the project `&#39;`s goals.
   - **Impact**: Showcasing real-world results and community reach.
   - **Gallery**: Visual representation of field work and events.
 - **Engagement Tools**: Volunteer registration and contact forms.

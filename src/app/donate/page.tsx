@@ -33,7 +33,7 @@ export default function Donate() {
 
     setLoading(true);
 
-    // Dynamically load the Paystack script if it's not already loaded
+    // Dynamically load the Paystack script if it `&#39;`s not already loaded
     const script = document.createElement("script");
     script.src = "https://js.paystack.co/v1/inline.js";
     script.async = true;
