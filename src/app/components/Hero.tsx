@@ -40,7 +40,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative h-screen xl:h-[800px] w-full xl:w-[1280px] mx-auto overflow-hidden bg-[#0a0f1d]">
+    <section className="relative h-screen 2xl:h-[900px] w-full 2xl:w-[1440px] mx-auto overflow-hidden bg-[#0a0f1d]">
       {/* Background Images Layer */}
       <div className="absolute inset-0 z-0">
         {images.map((src, index) => (
