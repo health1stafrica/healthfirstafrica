@@ -103,4 +103,4 @@ To update the gallery with new content, follow these steps:
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License
