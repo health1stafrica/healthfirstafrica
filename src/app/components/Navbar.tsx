@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation"; // 1. Import usePathname
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 
@@ -16,6 +17,12 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname(); // 2. Get the current route path
+
+  // 3. Determine if we are on the home page
+  const isHomePage = pathname === "/";
+  // 4. Force dark theme styling if we are NOT on home, OR if the page is scrolled
+  const shouldUseDarkTheme = !isHomePage || isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,12 +36,11 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        shouldUseDarkTheme
           ? "bg-[#F9F5EF]/95 backdrop-blur-md shadow-sm border-b border-[#194E6B]/5 py-3"
           : "bg-transparent py-5"
       }`}
     >
-      {/* Container aligned perfectly to the max-w-6xl core page structure */}
       <div className="max-w-6xl mx-auto px-6 xl:px-0">
         <div className="flex justify-between items-center">
           
@@ -49,7 +55,7 @@ export default function Navbar() {
             />
             <span 
               className={`text-lg font-extrabold tracking-tight transition-colors duration-300 ${
-                isScrolled ? "text-[#194E6B]" : "text-white"
+                shouldUseDarkTheme ? "text-[#194E6B]" : "text-white"
               }`}
             >
               Health First Africa
@@ -65,7 +71,7 @@ export default function Navbar() {
                 className={`text-sm font-bold tracking-wide transition-all duration-200 ${
                   link.isAction
                     ? "bg-[#194E6B] hover:bg-[#123b52] text-white px-5 py-2 rounded-xl shadow-md shadow-[#194E6B]/10 ml-2"
-                    : isScrolled
+                    : shouldUseDarkTheme
                       ? "text-[#194E6B] hover:text-[#3C8A4E]"
                       : "text-white/90 hover:text-white"
                 }`}
@@ -79,7 +85,7 @@ export default function Navbar() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={`md:hidden p-1.5 rounded-lg transition-colors focus:outline-none ${
-              isScrolled 
+              shouldUseDarkTheme 
                 ? "text-[#194E6B] hover:bg-[#194E6B]/5" 
                 : "text-white hover:bg-white/10"
             }`}
