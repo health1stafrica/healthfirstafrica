@@ -57,7 +57,7 @@ export default function Donate() {
       document.head.appendChild(styleNode);
 
       const handler = window.PaystackPop.setup({
-        key: "pk_test_3da0320b4ef3fc9240bbfbb0d577ae3e6d15b407", 
+        key: "process.env.NEXT_PUBLIC_PAYSTACK_KEY", 
         email: email,
         amount: Number(amount) * 100, 
         currency: "NGN",
