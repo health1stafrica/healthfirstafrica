@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { motion, Variants } from "motion/react";
 
 export default function VolunteerWithUs() {
@@ -58,6 +59,12 @@ export default function VolunteerWithUs() {
             <p>
               Whether you have a few hours a week or want to contribute your specialized skills on a project basis, your time and passion can make a real difference. Together, we can build a stronger, healthier future for all.
             </p>
+          </motion.div>
+
+          <motion.div variants={itemVariants} className="pt-6">
+            <Link href="/#contact" className="btn-primary">
+              Get in Touch
+            </Link>
           </motion.div>
 
         </motion.div>

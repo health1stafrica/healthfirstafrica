@@ -22,7 +22,7 @@ export default function Mission() {
   return (
     <section 
       id="mission" 
-      className="bg-[#F9F5EF] py-24 px-6 md:px-12 lg:px-24 border-t border-[#194E6B]/5"
+      className="bg-white py-24 px-6 md:px-12 lg:px-24 border-t border-brand-navy/5"
     >
       <div className="max-w-6xl mx-auto">
         <motion.div

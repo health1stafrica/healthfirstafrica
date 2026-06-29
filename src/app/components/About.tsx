@@ -56,7 +56,7 @@ export default function AboutUs() {
 
           {/* Core Statement */}
           <motion.div variants={itemVariants}>
-            <p className="text-[] text-xl md:text-2xl font-medium leading-relaxed text-[#194E6B]/90">
+            <p className="text-xl md:text-2xl font-medium leading-relaxed text-brand-navy/90">
               <span className="font-bold text-[#3C8A4E]">Health First Africa</span> is a registered non-profit health NGO in Abuja, Nigeria, dedicated to improving health outcomes and promoting equitable healthcare access for underserved populations.
             </p>
           </motion.div>

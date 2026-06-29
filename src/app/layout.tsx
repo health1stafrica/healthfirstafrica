@@ -101,7 +101,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased bg-brand-cream text-brand-ink">
+        <a href="#main-content" className="sr-only-focusable">
+          Skip to main content
+        </a>
         {/* Inject JSON-LD Schema on all pages */}
         <script
           type="application/ld+json"

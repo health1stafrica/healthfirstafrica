@@ -92,7 +92,7 @@ export default function Impact() {
               </h2>
               <div className="h-1 w-16 bg-[#3C8A4E] rounded-full mt-4" />
               <p className="text-[#1F1F1F]/80 text-base md:text-lg pt-2 max-w-md">
-                Measurable change, real lives transformed. Click across our key milestones to see how we `&#39;`re making a difference.
+                Measurable change, real lives transformed. Click across our key milestones to see how we&apos;re making a difference.
               </p>
             </div>
 

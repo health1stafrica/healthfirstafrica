@@ -9,7 +9,7 @@ import { AnimatePresence, motion } from "motion/react";
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/#about" },
-  { name: "Gallery", href: "/#gallery" },
+  { name: "Gallery", href: "/gallery" },
   { name: "Contact", href: "/#contact" },
   { name: "Donate", href: "/donate", isAction: true },
 ];
@@ -70,9 +70,9 @@ export default function Navbar() {
                 href={link.href}
                 className={`text-sm font-bold tracking-wide transition-all duration-200 ${
                   link.isAction
-                    ? "bg-[#194E6B] hover:bg-[#123b52] text-white px-5 py-2 rounded-xl shadow-md shadow-[#194E6B]/10 ml-2"
+                    ? "bg-brand-green hover:bg-brand-green-hover text-white px-5 py-2 rounded-xl shadow-md shadow-brand-green/20 ml-2"
                     : shouldUseDarkTheme
-                      ? "text-[#194E6B] hover:text-[#3C8A4E]"
+                      ? "text-brand-navy hover:text-brand-green"
                       : "text-white/90 hover:text-white"
                 }`}
               >
@@ -84,12 +84,14 @@ export default function Navbar() {
           {/* Mobile Navigation Interface Engine Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`md:hidden p-1.5 rounded-lg transition-colors focus:outline-none ${
+            className={`md:hidden p-1.5 rounded-lg transition-colors ${
               shouldUseDarkTheme 
-                ? "text-[#194E6B] hover:bg-[#194E6B]/5" 
+                ? "text-brand-navy hover:bg-brand-navy/5" 
                 : "text-white hover:bg-white/10"
             }`}
-            aria-label="Toggle navigation interface map"
+            aria-expanded={isOpen}
+            aria-controls="mobile-nav-menu"
+            aria-label="Toggle navigation menu"
           >
             {isOpen ? <X className="w-5 h-5 stroke-[2.5]" /> : <Menu className="w-5 h-5 stroke-[2.5]" />}
           </button>
@@ -104,7 +106,8 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="absolute top-full left-0 right-0 md:hidden bg-[#F9F5EF] border-b border-[#194E6B]/10 shadow-lg px-6 py-6 space-y-4"
+            id="mobile-nav-menu"
+            className="absolute top-full left-0 right-0 md:hidden bg-brand-cream border-b border-brand-navy/10 shadow-lg px-6 py-6 space-y-4"
           >
             {navLinks.map((link) => (
               <Link
@@ -113,8 +116,8 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className={`block text-sm font-bold tracking-wide transition-colors ${
                   link.isAction
-                    ? "bg-[#194E6B] text-white text-center py-3 rounded-xl shadow-md"
-                    : "text-[#194E6B] hover:text-[#3C8A4E] py-1.5"
+                    ? "bg-brand-green text-white text-center py-3 rounded-xl shadow-md"
+                    : "text-brand-navy hover:text-brand-green py-1.5"
                 }`}
               >
                 {link.name}

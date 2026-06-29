@@ -56,7 +56,7 @@ export default function Gallery() {
           className="space-y-14"
         >
           {/* Header & CTA */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-4 border-t border-[#194E6B]/10 pt-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-4">
             <div className="space-y-3 max-w-2xl">
               <span className="text-[#3C8A4E] text-xs font-bold tracking-widest uppercase block">
                 Visual Stories
@@ -73,7 +73,7 @@ export default function Gallery() {
             <motion.div variants={itemVariants} className="shrink-0">
               <Link
                 href="/gallery"
-                className="inline-block bg-[#194E6B] hover:bg-[#123b52] text-white px-8 py-3.5 rounded-xl text-base font-bold tracking-wide shadow-lg shadow-[#194E6B]/10 transition-all duration-300"
+                className="btn-secondary shrink-0"
               >
                 View Full Gallery
               </Link>

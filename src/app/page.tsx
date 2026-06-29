@@ -34,7 +34,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-[#F9F5EF] text-[#1F1F1F] font-Inter antialiased relative min-h-screen selection:bg-[#194E6B]/10">
+    <div className="bg-brand-cream text-brand-ink antialiased relative min-h-screen">
       <Navbar />
       
       <main id="main-content">
@@ -55,7 +55,7 @@ export default function Home() {
       {/* Persistent Interface Layers */}
       <AnimatePresence>
         {isVisible && (
-          <div className="fixed bottom-6 left-6 right-6 md:left-8 md:right-8 z-50 pointer-events-none flex justify-between items-center">
+          <div className="fixed bottom-6 left-6 right-6 md:left-8 md:right-8 z-50 pointer-events-none flex justify-between items-center pb-[env(safe-area-inset-bottom)]">
             
             {/* Target Accent Donate Action Hook */}
             <motion.div
@@ -67,7 +67,7 @@ export default function Home() {
             >
               <Link
                 href="/donate"
-                className="bg-[#3C8A4E] hover:bg-[#2e6b3c] text-white pl-4 pr-5 py-3 rounded-xl shadow-xl shadow-[#3C8A4E]/20 flex items-center gap-2.5 transition-all duration-300 font-bold text-sm tracking-wide active:scale-98"
+                className="btn-primary pl-4 pr-5 py-3 shadow-xl flex items-center gap-2.5 text-sm"
               >
                 <Heart className="w-4 h-4" fill="currentColor" />
                 <span>Support Our Mission</span>
@@ -81,7 +81,7 @@ export default function Home() {
               exit={{ opacity: 0, scale: 0.9, y: 10 }}
               transition={{ duration: 0.2 }}
               onClick={scrollToTop}
-              className="pointer-events-auto p-3.5 rounded-xl bg-[#194E6B] hover:bg-[#123b52] text-white shadow-xl shadow-[#194E6B]/20 transition-all duration-300 active:scale-95"
+              className="pointer-events-auto p-3.5 rounded-xl bg-brand-navy hover:bg-brand-navy-hover text-white shadow-xl shadow-brand-navy/20 transition-all duration-300 active:scale-[0.98]"
               aria-label="Scroll view to top of page"
             >
               <ArrowUp className="h-4 w-4 stroke-[2.5]" />

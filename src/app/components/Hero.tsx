@@ -63,8 +63,8 @@ export default function Hero() {
 
       {/* Premium Directional Gradient Overlay */}
       {/* Darker on the left to shield the text, transparent on the right to preserve the photo */}
-      <div className="absolute inset-0 z-15 bg-gradient-to-r from-black via-black/80 to-transparent md:from-[#0a0f1d]/95 md:via-[#0a0f1d]/75 md:to-transparent" />
-      <div className="absolute inset-0 z-15 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-black via-black/80 to-transparent md:from-[#0a0f1d]/95 md:via-[#0a0f1d]/75 md:to-transparent" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
       {/* Structural Layout Container */}
       <div className="relative z-20 mx-auto max-w-7xl h-full px-6 md:px-12 lg:px-16 flex flex-col justify-center">
@@ -95,7 +95,7 @@ export default function Hero() {
           {/* Clean Description */}
           <motion.p
             variants={itemVariants}
-            className="text-[#F9F5EF]/90 text-md sm:text-lg md:text-xl leading-relaxed font-normal max-w-2xl"
+            className="text-[#F9F5EF]/90 text-base sm:text-lg md:text-xl leading-relaxed font-normal max-w-2xl"
           >
             Every mother. Every child. Every community. As one of the leading health NGOs in Nigeria, we bridge gaps in healthcare access with compassion, data, and local partnerships.
           </motion.p>
@@ -105,16 +105,10 @@ export default function Hero() {
             variants={itemVariants}
             className="pt-2 flex flex-wrap items-center gap-4"
           >
-            <Link
-              href="/donate"
-              className="inline-block bg-[#3C8A4E] hover:bg-[#347844] text-white px-8 py-3.5 rounded-xl text-base font-bold tracking-wide shadow-xl shadow-[#3C8A4E]/20 hover:shadow-none transition-all duration-300"
-            >
+            <Link href="/donate" className="btn-primary shadow-xl">
               Donate Now
             </Link>
-            <Link
-              href="/gallery"
-              className="inline-block bg-white/10 border border-white/20 text-white px-8 py-3.5 rounded-xl text-base font-semibold backdrop-blur-md hover:bg-white hover:text-[#194E6B] transition-all duration-300"
-            >
+            <Link href="/gallery" className="btn-outline-light">
               Explore Our Work
             </Link>
           </motion.div>

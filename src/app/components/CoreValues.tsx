@@ -83,7 +83,7 @@ export default function CoreValues() {
                 <h3 className="text-xl font-bold text-[#3C8A4E] tracking-tight">
                   {value.title}
                 </h3>
-                <p className="text-[#1F1F1F] text-base md:text-md leading-relaxed opacity-95">
+                <p className="text-brand-ink text-base md:text-lg leading-relaxed opacity-95">
                   {value.content}
                 </p>
               </div>
