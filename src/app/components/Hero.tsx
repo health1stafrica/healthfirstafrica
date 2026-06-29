@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "motion/react";
 
 const images = [
   "/assets/img (1).jpg",
@@ -22,64 +22,119 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
-  return (
-    <section className="h-screen w-full overflow-hidden relative bg-black">
-      {/* Background Image */}
-      <Image
-        src={images[currentImageIndex]}
-        alt="Health First Africa outreach"
-        fill
-        priority
-        className="object-cover object-center z-0 absolute inset-0 brightness-25 transition-opacity duration-1000 ease-in-out"
-      />
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.12, delayChildren: 0.2 }
+    }
+  };
 
-      {/* Image Counter */}
-      <div className="absolute top-4 right-6 bg-black/50 text-white px-4 py-1 rounded-full z-30 text-sm font-medium backdrop-blur-sm">
-        {currentImageIndex + 1} / {images.length}
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 25 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+    }
+  };
+
+  return (
+    <section className="relative h-screen 2xl:h-[900px] w-full 2xl:w-[1440px] mx-auto overflow-hidden bg-[#0a0f1d]">
+      {/* Background Images Layer */}
+      <div className="absolute inset-0 z-0">
+        {images.map((src, index) => (
+          <div
+            key={src}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentImageIndex ? "opacity-45 md:opacity-55" : "opacity-0"
+            }`}
+          >
+            <Image
+              src={src}
+              alt="Health First Africa outreach slide"
+              fill
+              priority={index === 0}
+              className="object-cover object-center scale-105 animate-[subtle-zoom_20s_infinite_alternate]"
+            />
+          </div>
+        ))}
       </div>
 
-      {/* Text Content */}
-      <div className="relative z-20 flex flex-col items-center justify-center h-full text-center text-white px-4">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-4xl md:text-6xl font-bold leading-tight max-w-4xl"
-        >
-          Health First. Hope Always.
-        </motion.h1>
+      {/* Premium Directional Gradient Overlay */}
+      {/* Darker on the left to shield the text, transparent on the right to preserve the photo */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-black via-black/80 to-transparent md:from-[#0a0f1d]/95 md:via-[#0a0f1d]/75 md:to-transparent" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 1.2, ease: "easeOut" }}
-          className="mt-4 text-lg md:text-xl max-w-2xl text-white/90"
-        >
-          Every mother. Every child. Every community. We’re bridging the gap in
-          healthcare access with compassion, data, and local partnerships across
-          Nigeria.
-        </motion.p>
-
-        {/* CTA Buttons */}
+      {/* Structural Layout Container */}
+      <div className="relative z-20 mx-auto max-w-7xl h-full px-6 md:px-12 lg:px-16 flex flex-col justify-center">
+        
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 1.2, ease: "easeOut" }}
-          className="mt-6 flex flex-wrap items-center justify-center gap-4"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="space-y-6 md:space-y-8 max-w-3xl"
         >
-          <Link
-            href="/donate"
-            className="inline-block bg-[#E63946] hover:bg-[#d32f2f] text-white px-6 py-3 rounded-full text-lg font-semibold transition"
+          {/* Tagline Badge (Fixed the unreadable green text) */}
+          <motion.div variants={itemVariants}>
+            <span className="inline-flex items-center gap-2 bg-[#3C8A4E]/20 border border-[#3C8A4E]/40 px-3.5 py-1.5 rounded-full text-[#52be6c] text-xs font-bold tracking-widest uppercase backdrop-blur-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#3C8A4E] animate-pulse" />
+              Abuja, Nigeria
+            </span>
+          </motion.div>
+
+          {/* Premium Typography Heading */}
+          <motion.h1
+            variants={itemVariants}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] tracking-tight"
           >
-            Donate Now
-          </Link>
-          <Link
-            href="/gallery"
-            className="inline-block border border-white text-white px-6 py-3 rounded-full text-lg font-medium hover:bg-white hover:text-[#194E6B] transition"
+            Health First.<br />
+            <span className="text-[#F9F5EF] font-light italic opacity-85">Hope Always.</span>
+          </motion.h1>
+
+          {/* Clean Description */}
+          <motion.p
+            variants={itemVariants}
+            className="text-[#F9F5EF]/90 text-base sm:text-lg md:text-xl leading-relaxed font-normal max-w-2xl"
           >
-            Explore Our Work
-          </Link>
+            Every mother. Every child. Every community. As one of the leading health NGOs in Nigeria, we bridge gaps in healthcare access with compassion, data, and local partnerships.
+          </motion.p>
+
+          {/* Actions Row */}
+          <motion.div
+            variants={itemVariants}
+            className="pt-2 flex flex-wrap items-center gap-4"
+          >
+            <Link href="/donate" className="btn-primary shadow-xl">
+              Donate Now
+            </Link>
+            <Link href="/gallery" className="btn-outline-light">
+              Explore Our Work
+            </Link>
+          </motion.div>
         </motion.div>
+
+        {/* Flat Modern Pagination Indicators */}
+        <div className="absolute bottom-12 left-6 right-6 md:left-12 md:right-12 lg:left-16 lg:right-16 2xl:left-0 2xl:right-0 z-30 flex gap-3">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImageIndex(index)}
+              className="h-1 flex-1 bg-white/15 rounded-full overflow-hidden relative cursor-pointer"
+              aria-label={`Go to slide ${index + 1}`}
+            >
+              {index === currentImageIndex && (
+                <motion.div
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 7.5, ease: "linear" }}
+                  className="absolute inset-y-0 left-0 bg-[#3C8A4E]"
+                />
+              )}
+            </button>
+          ))}
+        </div>
+
       </div>
     </section>
   );

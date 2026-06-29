@@ -1,114 +1,119 @@
 "use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "motion/react";
 
 export default function Footer() {
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
+  const socials = [
+    {
+      href: "https://www.linkedin.com/company/health-first-africa-ltd-gte/",
+      icon: <Linkedin className="w-4 h-4" />,
+    },
+    {
+      href: "https://www.facebook.com/profile.php?id=61575137017478&mibextid=LQQJ4d",
+      icon: <Facebook className="w-4 h-4" />,
+    },
+    {
+      href: "https://www.instagram.com/health_first_africa_ltd_gte/profilecard/?igsh=Y2J4MW00czk4MHg4",
+      icon: <Instagram className="w-4 h-4" />,
+    },
+  ];
+
   return (
     <motion.footer
-      className="bg-gray-900 text-white py-12 px-4 md:px-8 lg:px-16"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className="bg-[#F9F5EF] pb-16 pt-8 px-6 md:px-12 lg:px-24"
     >
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Logo & Description */}
-        <div>
-          <Link href="/" className="flex items-center space-x-2">
-            <Image
-              src="/assets/logo-plain.png"
-              alt="Logo"
-              width={40}
-              height={40}
-              className="rounded-full object-cover"
-            />
-            <span className="text-xl font-bold text-white">
-              Health First Africa
-            </span>
-          </Link>
-          <p className="text-gray-400 mt-3">
-            Empowering lives through education, healthcare, and sustainable
-            community development.
-          </p>
-        </div>
-
-        {/* Quick Links */}
-        <div>
-          <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-          <ul className="space-y-2 text-gray-300">
-            <li>
-              <Link href="/" className="hover:text-white transition">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link href="/#about" className="hover:text-white transition">
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link href="/#gallery" className="hover:text-white transition">
-                Gallery
-              </Link>
-            </li>
-            <li>
-              <Link href="/#contact" className="hover:text-white transition">
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link href="/donate" className="hover:text-white transition">
-                Donate
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Contact & Socials */}
-        <div className="flex flex-col gap-2">
-          <h4 className="text-lg font-semibold mb-4">Contact</h4>
-          <p className="text-gray-400">Email: Info@health1stafrica.org</p>
-          <p className="text-gray-400">Phone: +234 906 078 9816</p>
-          <p className="text-gray-400 mb-4">
-            Address: Wing C, House 6, Gold City Estate 2, Airport Road,
-            FCT-Abuja, Nigeria.
-          </p>
-
-          <div className="flex gap-4">
-            <a
-              href="https://www.linkedin.com/company/health-first-africa-ltd-gte/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition"
-            >
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a
-              href="https://www.facebook.com/profile.php?id=61575137017478&mibextid=LQQJ4d"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition"
-            >
-              <Facebook className="w-5 h-5" />
-            </a>
-            <a
-              href="https://www.instagram.com/health_first_africa_ltd_gte/profilecard/?igsh=Y2J4MW00czk4MHg4"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition"
-            >
-              <Instagram className="w-5 h-5" />
-            </a>
+      <div className="max-w-6xl mx-auto border-t border-[#194E6B]/10 pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
+          
+          {/* Column 1: Brand Identifier */}
+          <div className="md:col-span-5 space-y-4">
+            <Link href="/" className="flex items-center gap-2.5 group">
+              <Image
+                src="/assets/logo-plain.png"
+                alt="Health First Africa corporate seal"
+                width={36}
+                height={36}
+                className="rounded-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <span className="text-lg font-extrabold tracking-tight text-[#194E6B]">
+                Health First Africa
+              </span>
+            </Link>
+            <p className="text-[#1F1F1F]/70 text-sm leading-relaxed max-w-sm">
+              Empowering lives through targeted healthcare education, community health access delivery, and sustainable regional systems transformation.
+            </p>
           </div>
-        </div>
-      </div>
 
-      {/* Copyright */}
-      <div className="mt-12 text-center text-gray-500 text-sm">
-        © {new Date().getFullYear()} Health First Africa. All rights reserved.
+          {/* Column 2: Structural Navigation Matrix */}
+          <div className="md:col-span-4 space-y-4">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#1F1F1F]/40">
+              Platform Indexes
+            </h4>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5 text-sm font-semibold text-[#194E6B]/90">
+              <li>
+                <Link href="/" className="hover:text-[#3C8A4E] transition-colors">Home</Link>
+              </li>
+              <li>
+                <Link href="/#about" className="hover:text-[#3C8A4E] transition-colors">About Us</Link>
+              </li>
+              <li>
+                <Link href="/#services" className="hover:text-[#3C8A4E] transition-colors">What We Do</Link>
+              </li>
+              <li>
+                <Link href="/#gallery" className="hover:text-[#3C8A4E] transition-colors">Gallery</Link>
+              </li>
+              <li>
+                <Link href="/#contact" className="hover:text-[#3C8A4E] transition-colors">Contact</Link>
+              </li>
+              <li>
+                <Link href="/donate" className="text-[#3C8A4E] hover:underline transition-all">Donate Now</Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Social Network Hooks */}
+          <div className="md:col-span-3 space-y-4 md:text-right md:flex md:flex-col md:items-end">
+            <div className="space-y-4 w-full">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#1F1F1F]/40">
+                Digital Footprint
+              </h4>
+              <div className="flex gap-2.5 md:justify-end">
+                {socials.map((social, i) => (
+                  <a
+                    key={i}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2.5 bg-white border border-[#194E6B]/10 text-[#194E6B] rounded-lg hover:bg-[#194E6B] hover:text-white transition-all duration-200 shadow-sm"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Global System Disclaimer / Attributions */}
+        <div className="mt-16 pt-6  flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium text-[#1F1F1F]/40">
+          <p>Registered Healthcare NGO &bull; Abuja, Nigeria.</p>
+          <p>&copy; {new Date().getFullYear()} Health First Africa. All rights reserved.</p>
+        </div>
       </div>
     </motion.footer>
   );

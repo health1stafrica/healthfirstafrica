@@ -1,14 +1,22 @@
 "use client";
-
-import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "motion/react";
 
 export default function CoreValues() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.12 }
+    }
+  };
 
-  const toggleSection = (index: number) => {
-    setOpenIndex((prev) => (prev === index ? null : index));
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.8, ease: "easeOut" } 
+    }
   };
 
   const values = [
@@ -35,64 +43,55 @@ export default function CoreValues() {
   ];
 
   return (
-    <section className="bg-white py-20 px-4 md:px-8 lg:px-16">
-      <motion.div
-        className="max-w-4xl mx-auto text-center"
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.7 }}
-      >
-        <h2 className="text-3xl md:text-4xl font-bold text-[#194E6B] mb-6">
-          Our Core Values
-        </h2>
-        <p className="text-gray-700 text-lg mb-12 max-w-2xl mx-auto">
-          At the heart of Health First Africa are values that guide everything
-          we do—from strategic planning to the smallest acts of service.
-        </p>
+    <section 
+      id="values" 
+      className="bg-[#F9F5EF] py-24 px-6 md:px-12 lg:px-24 "
+    >
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="space-y-12"
+        >
+          {/* Header */}
+          <motion.div variants={itemVariants} className="space-y-3">
+            <span className="text-[#3C8A4E] text-xs font-bold tracking-widest uppercase block">
+              Our Principles
+            </span>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-[#194E6B] tracking-tight">
+              Our Core Values
+            </h2>
+            <div className="h-1 w-16 bg-[#3C8A4E] rounded-full mt-4" />
+          </motion.div>
 
-        <div className="space-y-4 text-left">
-          {values.map((value, index) => {
-            const isOpen = openIndex === index;
-            return (
-              <div
-                key={index}
-                className="border border-gray-200 rounded-xl overflow-hidden shadow-sm"
-              >
-                <button
-                  onClick={() => toggleSection(index)}
-                  className="flex justify-between items-center w-full text-left px-5 py-4 bg-gray-100 hover:bg-gray-200 transition-colors cursor-pointer"
-                >
-                  <span className="text-lg font-semibold text-[#3C8A4E]">
-                    {value.title}
-                  </span>
-                  {isOpen ? (
-                    <ChevronUp className="w-5 h-5 text-[#3C8A4E]" />
-                  ) : (
-                    <ChevronDown className="w-5 h-5 text-gray-500" />
-                  )}
-                </button>
+          {/* Intro Statement */}
+          <motion.div variants={itemVariants}>
+            <p className="text-xl md:text-2xl font-medium leading-relaxed text-[#194E6B]/90">
+              At the heart of Health First Africa are values that guide everything we do—from strategic planning to the smallest acts of service.
+            </p>
+          </motion.div>
 
-                <motion.div
-                  initial={false}
-                  animate={{
-                    height: isOpen ? "auto" : 0,
-                    opacity: isOpen ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.35, ease: "easeInOut" }}
-                  className="overflow-hidden bg-white px-5"
-                >
-                  <div className="py-4">
-                    <p className="text-gray-700 text-base leading-relaxed">
-                      {value.content}
-                    </p>
-                  </div>
-                </motion.div>
+          {/* Grid Layout Container */}
+          <motion.div 
+            variants={itemVariants} 
+            className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 pt-6 border-t border-[#194E6B]/10"
+          >
+            {values.map((value, index) => (
+              <div key={index} className="space-y-2">
+                <h3 className="text-xl font-bold text-[#3C8A4E] tracking-tight">
+                  {value.title}
+                </h3>
+                <p className="text-brand-ink text-base md:text-lg leading-relaxed opacity-95">
+                  {value.content}
+                </p>
               </div>
-            );
-          })}
-        </div>
-      </motion.div>
+            ))}
+          </motion.div>
+
+        </motion.div>
+      </div>
     </section>
   );
 }
