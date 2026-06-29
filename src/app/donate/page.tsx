@@ -38,6 +38,26 @@ export default function DonatePage() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [errorMessage]);
 
+  useEffect(() => {
+    // Reset the redirecting state when the user returns to this page
+    // (e.g. cancels on Paystack or hits back), including from the bfcache.
+    const resetLoading = () => setLoading(false);
+
+    const onPageShow = (event: PageTransitionEvent) => {
+      if (event.persisted) {
+        resetLoading();
+      }
+    };
+
+    window.addEventListener("pageshow", onPageShow);
+    window.addEventListener("focus", resetLoading);
+
+    return () => {
+      window.removeEventListener("pageshow", onPageShow);
+      window.removeEventListener("focus", resetLoading);
+    };
+  }, []);
+
   const closeError = () => setErrorMessage(null);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
