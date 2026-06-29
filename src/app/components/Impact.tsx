@@ -12,32 +12,32 @@ interface StatItem {
 export default function Impact() {
   const impactStats: StatItem[] = [
     {
-      metric: "1,500+",
+      metric: "11k+",
       label: "Clients Reached",
       title: "Essential Care across FCT",
       description:
-        "Through community outreach, facility-based support, and targeted health interventions, we provided essential health education and services to over 1,500 individuals, improving healthcare access and local outcomes.",
-    },
-    {
-      metric: "28",
-      label: "Providers Trained",
-      title: "Upskilling Local Healthcare Professionals",
-      description:
-        "We equipped over 28 healthcare professionals with specialized skills in maternal, newborn, and child health, HIV prevention, and client-centered care — permanently elevating service quality.",
+        "Through community outreach, facility-based support, and targeted health interventions, we provided essential health education and services to over 11,000 individuals, improving healthcare access and local outcomes.",
     },
     {
       metric: "700+",
+      label: "Providers Trained",
+      title: "Upskilling Local Healthcare Professionals",
+      description:
+        "We equipped over 700 healthcare professionals with specialized skills in maternal, newborn, and child health, HIV prevention, and client-centered care — permanently elevating service quality.",
+    },
+    {
+      metric: "5k+",
       label: "Children Monitored",
       title: "Early Development & Well-being",
       description:
-        "Regular field follow-ups, growth monitoring, and efficient medical referrals helped ensure the ongoing well-being and survival of more than 700 children across our focus communities.",
+        "Regular field follow-ups, growth monitoring, and efficient medical referrals helped ensure the ongoing well-being and survival of more than 5,000 children across our focus communities.",
     },
     {
-      metric: "73",
+      metric: "500+",
       label: "Caregivers Empowered",
       title: "Transforming Domestic Support Systems",
       description:
-        "We trained 73 caregivers in vital nutrition, early childhood development, and disease prevention techniques — helping them better support and protect the children in their direct care.",
+        "We trained over 500 caregivers in vital nutrition, early childhood development, and disease prevention techniques — helping them better support and protect the children in their direct care.",
     },
   ];
 

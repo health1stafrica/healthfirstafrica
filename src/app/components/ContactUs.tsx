@@ -129,8 +129,8 @@ export default function ContactUs() {
             >
               <div className="w-full h-72 lg:h-full min-h-[300px] rounded-2xl overflow-hidden border border-black/[0.04] shadow-sm bg-neutral-200 relative">
                 <iframe
-                  title="Abuja Office Map"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126822.79671517841!2d7.349996687401709!3d9.057850219752678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0b51f1708a8f%3A0xdd24bc3a0baff378!2sAbuja!5e0!3m2!1sen!2sng!4v1718603096321!5m2!1sen!2sng"
+                  title="Lugbe, Abuja Office Map"
+                  src="https://www.google.com/maps?q=Lugbe,+Abuja,+Nigeria&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -152,7 +152,7 @@ export default function ContactUs() {
             <div className="space-y-1">
               <h5 className="font-bold text-[#194E6B]">Regional Hub &amp; Headquarters</h5>
               <p className="text-[#1F1F1F]/80 max-w-xl">
-                Wing C, House 6, Gold City Estate 2, Airport Road, FCT-Abuja, Nigeria
+                House 1, Pephilaz Homes, Opposite Aco Estate, Fisas Road, Off Lilian Street, Lugbe-Abuja, Nigeria
               </p>
             </div>
           </motion.div>
