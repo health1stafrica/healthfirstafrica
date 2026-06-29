@@ -79,7 +79,7 @@ const jsonLd = [
     "description": "Health First Africa is a registered non-profit health NGO in Abuja, Nigeria, dedicated to promoting health and dignity by bridging the gap in healthcare access for underserved populations across Nigeria.",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Wing C, House 6, Gold City Estate 2, Airport Road",
+      "streetAddress": "House 1, Pephilaz Homes, Opposite Aco Estate, Fisas Road, Off Lilian Street, Lugbe",
       "addressLocality": "Abuja",
       "addressRegion": "FCT",
       "addressCountry": "NG"
