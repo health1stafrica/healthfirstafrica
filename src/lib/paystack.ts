@@ -5,7 +5,7 @@ export function normalizeEnvValue(value: string | undefined): string {
 export function getPaystackSecretKey(): string | null {
   const key = normalizeEnvValue(process.env.PAYSTACK_SECRET_KEY);
 
-  if (!key || !/^sk_(test|live)_[a-zA-Z0-9]+$/i.test(key)) {
+  if (!key || !/^sk_(test|live)_/i.test(key)) {
     return null;
   }
 
@@ -18,15 +18,19 @@ export function getSiteUrl(request: Request): string {
     return envUrl.replace(/\/$/, "");
   }
 
-  const origin = request.headers.get("origin");
-  if (origin) {
-    return origin;
+  const forwardedHost = request.headers.get("x-forwarded-host");
+  const host = forwardedHost ?? request.headers.get("host");
+
+  if (host) {
+    const protocol =
+      request.headers.get("x-forwarded-proto")?.split(",")[0]?.trim() ??
+      "https";
+    return `${protocol}://${host}`.replace(/\/$/, "");
   }
 
-  const host = request.headers.get("host");
-  if (host) {
-    const protocol = request.headers.get("x-forwarded-proto") ?? "http";
-    return `${protocol}://${host}`;
+  const origin = request.headers.get("origin");
+  if (origin) {
+    return origin.replace(/\/$/, "");
   }
 
   return "http://localhost:3000";
@@ -53,13 +57,29 @@ export function sanitizeDonorName(name: unknown): string {
   return trimmed || "Anonymous";
 }
 
+export function normalizeDonationAmount(amount: unknown): number | null {
+  if (typeof amount === "number" && Number.isFinite(amount)) {
+    return Math.round(amount);
+  }
+
+  if (typeof amount === "string" && amount.trim() !== "") {
+    const parsed = Number(amount);
+    if (Number.isFinite(parsed)) {
+      return Math.round(parsed);
+    }
+  }
+
+  return null;
+}
+
 export function isValidDonationAmount(amount: unknown): amount is number {
+  const normalized = typeof amount === "number" ? amount : normalizeDonationAmount(amount);
+
   return (
-    typeof amount === "number" &&
-    Number.isFinite(amount) &&
-    Number.isInteger(amount) &&
-    amount >= MIN_DONATION_NGN &&
-    amount <= MAX_DONATION_NGN
+    normalized !== null &&
+    Number.isInteger(normalized) &&
+    normalized >= MIN_DONATION_NGN &&
+    normalized <= MAX_DONATION_NGN
   );
 }
 
